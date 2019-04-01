@@ -1,3 +1,5 @@
+//heyyyyyyy
+
 var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 var stores = ['1st and Pike', 'SeaTac Airport','Seattle Center','Capital Hill','Alki'];
 var minStoreCustomer = [23,3,11,20,2];
