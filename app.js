@@ -6,6 +6,7 @@ var avgCookieSale = [6.3,1.2,3.7,2.3,4.6];
 
 //The first store object
 var firstAndPike = {
+  storeName: stores[0],
   minNumOfCustomers: minStoreCustomer[0],
   maxNumOfCustomers: maxStoreCustomer[0],
   avgCookieBought: avgCookieSale[0],
@@ -43,6 +44,7 @@ var firstAndPike = {
 
 //The second store object
 var seatacAirport = {
+  storeName: stores[1],
   minNumOfCustomers: minStoreCustomer[1],
   maxNumOfCustomers: maxStoreCustomer[1],
   avgCookieBought: avgCookieSale[1],
@@ -80,6 +82,7 @@ var seatacAirport = {
 
 //The third store object
 var seattleCenter = {
+  storeName: stores[2],
   minNumOfCustomers: minStoreCustomer[2],
   maxNumOfCustomers: maxStoreCustomer[2],
   avgCookieBought: avgCookieSale[2],
@@ -117,6 +120,7 @@ var seattleCenter = {
 
 //The fourth store object
 var capitolHill = {
+  storeName: stores[3],
   minNumOfCustomers: minStoreCustomer[3],
   maxNumOfCustomers: maxStoreCustomer[3],
   avgCookieBought: avgCookieSale[3],
@@ -154,6 +158,7 @@ var capitolHill = {
 
 //The fifth store object
 var alki = {
+  storeName: stores[4],
   minNumOfCustomers: minStoreCustomer[4],
   maxNumOfCustomers: maxStoreCustomer[4],
   avgCookieBought: avgCookieSale[4],
@@ -193,7 +198,7 @@ var alki = {
 //the code to display the data for the first store
 firstAndPike.driver();
 var ulEl = document.getElementById('store1Result');
-ulEl.textContent = stores[0];
+document.getElementById('store1Heading').innerHTML = firstAndPike.storeName;
 for(var i=0; i<hours.length; i++)
 {
   var liEl = document.createElement('li');
@@ -207,7 +212,7 @@ ulEl.appendChild(liEl);
 //the code to display the data for the second store
 seatacAirport.driver();
 ulEl = document.getElementById('store2Result');
-ulEl.textContent = stores[1];
+document.getElementById('store2Heading').innerHTML = seatacAirport.storeName;
 for(var j=0; j<hours.length; j++)
 {
   liEl = document.createElement('li');
@@ -221,7 +226,7 @@ ulEl.appendChild(liEl);
 //the code to display the data for the third store
 seattleCenter.driver();
 ulEl = document.getElementById('store3Result');
-ulEl.textContent = stores[2];
+document.getElementById('store3Heading').innerHTML = seattleCenter.storeName;
 for(var k=0; k<hours.length; k++)
 {
   liEl = document.createElement('li');
@@ -235,7 +240,7 @@ ulEl.appendChild(liEl);
 //the code to display the data for the fourth store
 capitolHill.driver();
 ulEl = document.getElementById('store4Result');
-ulEl.textContent = stores[3];
+document.getElementById('store4Heading').innerHTML = capitolHill.storeName;
 for(var l=0; l<hours.length; l++)
 {
   liEl = document.createElement('li');
@@ -249,7 +254,7 @@ ulEl.appendChild(liEl);
 //the code to display the data for the fifth store
 alki.driver();
 ulEl = document.getElementById('store5Result');
-ulEl.textContent = stores[4];
+document.getElementById('store5Heading').innerHTML = alki.storeName;
 for(var m=0; m<hours.length; m++)
 {
   liEl = document.createElement('li');
