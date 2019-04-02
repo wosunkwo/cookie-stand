@@ -27,7 +27,7 @@ var firstAndPike = {
   fillCookiesPerHour: function(){
     for(var i=0; i<hours.length; i++)
     {
-      this.cookiesPerHour.push(Math.round(this.customersPerHour[i] * this.avgCookieBought));
+      this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookieBought));
     }
   },
   fillTotalValue: function(){
@@ -65,7 +65,7 @@ var seatacAirport = {
   fillCookiesPerHour: function(){
     for(var i=0; i<hours.length; i++)
     {
-      this.cookiesPerHour.push(Math.round(this.customersPerHour[i] * this.avgCookieBought));
+      this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookieBought));
     }
   },
   fillTotalValue: function(){
@@ -103,7 +103,7 @@ var seattleCenter = {
   fillCookiesPerHour: function(){
     for(var i=0; i<hours.length; i++)
     {
-      this.cookiesPerHour.push(Math.round(this.customersPerHour[i] * this.avgCookieBought));
+      this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookieBought));
     }
   },
   fillTotalValue: function(){
@@ -141,7 +141,7 @@ var capitolHill = {
   fillCookiesPerHour: function(){
     for(var i=0; i<hours.length; i++)
     {
-      this.cookiesPerHour.push(Math.round(this.customersPerHour[i] * this.avgCookieBought));
+      this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookieBought));
     }
   },
   fillTotalValue: function(){
@@ -179,7 +179,7 @@ var alki = {
   fillCookiesPerHour: function(){
     for(var i=0; i<hours.length; i++)
     {
-      this.cookiesPerHour.push(Math.round(this.customersPerHour[i] * this.avgCookieBought));
+      this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookieBought));
     }
   },
   fillTotalValue: function(){
@@ -202,7 +202,7 @@ document.getElementById('store1Heading').innerHTML = firstAndPike.storeName;
 for(var i=0; i<hours.length; i++)
 {
   var liEl = document.createElement('li');
-  liEl.textContent = hours[i] + ': ' + firstAndPike.cookiesPerHour[i] + ' cookies';
+  liEl.textContent = `${hours[i]}: ${firstAndPike.cookiesPerHour[i]} cookies`;
   ulEl.appendChild(liEl);
 }
 liEl = document.createElement('li');
