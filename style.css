@@ -1,8 +1,55 @@
-#storeTbl {
-  width: 100%;
+/*The styling for my home page */
+#homePage {
+  background-color:#666;
+}
+#homePage h1{
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  font-size: 50px;
+}
+#homePage h2{
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  font-size: 30px;
 }
 
-table, th, td { 
+#homePage #fishImage{
+   width: 85%;
+   margin: 0px;
+   margin-left: 100px;
+/*   border: 1px outset pink; */
+}
+/*My menu bar styling was done with help from a tutorial on w3schools */
+#homePage ul {
+  overflow: hidden;
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  background-color: #666;
+}
+#homePage li {
+  float: left;
+}
+#homePage li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+#homePage li a:hover:not(.homeElement){
+  background-color: #666;
+}
+#homePage li a.homeElement {
+  color:white;
+  background-color:red;
+}
+
+/*The styling for my store page */
+#salesPage #storeTbl {
+  width: 100%;
+}
+#salesPage table, th, td { 
   border: 1px solid grey;
   border-collapse: collapse;
   background-color: gainsboro;
