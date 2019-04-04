@@ -46,6 +46,10 @@
 }
 
 /*The styling for my store page */
+#salesPage{
+  /*font-family: 'Indie Flower', cursive; */
+}
+
 #salesPage #storeTbl {
   width: 100%;
 }

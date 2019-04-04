@@ -1,12 +1,18 @@
 'use strict';
 
 var hours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm','8:00pm'];
+
+//the starting values for the store name, min store customer, max store customer, and avg cookies bought. This are going to be modified as the user puts in new values in the text field
 var stores = ['1st and Pike', 'SeaTac Airport','Seattle Center','Capital Hill','Alki'];
 var minStoreCustomer = [23,3,11,20,2];
 var maxStoreCustomer = [65,24,38,38,16];
-var avgCookieSale = [6.3,1.2,3.7,2.3,4.6];
-var storeList = [];  //this stores all the individual store instances of the constructor
+var avgCookieBought = [6.3,1.2,3.7,2.3,4.6];
+var storeList = []; //this stores all the individual store instances of the constructor
 var tbEl = document.getElementById('storeTbl'); //this creates a reference to the table element in the html code
+var numOfStores = 0; //this keeps track of how many stores we currently have
+
+//this statement assigns a DOM element reference to the modify form on the html
+var modifyFormDom = document.getElementById('modifyForm');
 
 function CookieStore(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought ) {
   this.storeName = storeName;
@@ -32,6 +38,8 @@ CookieStore.prototype.fillCookiesPerHour = function(){
     this.totalValue += this.cookiesPerHour[i];
   }
 };
+
+//this function handles displaying of the elements in the main body of the table
 CookieStore.prototype.render = function(){
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
@@ -69,13 +77,11 @@ function headerDisplay(){
   trEl.appendChild(thEl);
   tbEl.appendChild(trEl);
 }
-//this function handles displaying of the elements in the main body of the table
-function mainDisplay(){
-  for(var i =0; i<stores.length; i++){
-    new CookieStore(stores[i], minStoreCustomer[i], maxStoreCustomer[i], avgCookieSale[i]);
-    storeList[i].driver();
-  }
-  console.log(storeList);
+//This function handles the creation of instances, updating the store count and passing them to the DOM
+function createInstance(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought){
+  new CookieStore(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought);
+  storeList[numOfStores].driver();
+  numOfStores ++;
 }
 //this function handles displaying of the footer elements in the table
 function footerDisplay(){
@@ -89,7 +95,6 @@ function footerDisplay(){
     for(var j=0; j<storeList.length; j++){
       totalPerHour += storeList[j].cookiesPerHour[i];
     }
-    console.log(totalPerHour);
     var tdEl = document.createElement('td');
     tdEl.textContent = totalPerHour;
     trEl.appendChild(tdEl);
@@ -103,6 +108,50 @@ function footerDisplay(){
   tbEl.appendChild(trEl);
 }
 
-headerDisplay();
-mainDisplay();
-footerDisplay();
+//this function handles creating of the first five default locations
+function creatDefaultLocation(){
+  for(var i=0; i<stores.length; i++){
+    createInstance(stores[i], minStoreCustomer[i], maxStoreCustomer[i], avgCookieBought[i]);
+  }
+
+}
+
+//The event handler function
+function handleModifyForm(event){
+  event.preventDefault();
+  var storeName = event.target.storeNameTxt.value;
+  var minNumOfCustomers = Number(event.target.minNumOfCustomersTxt.value);
+  var maxNumOfCustomers = Number(event.target.maxNumOfCustomersTxt.value);
+  var avgCookieBought = Number(event.target.avgCookieBoughtTxt.value);
+
+  tbEl.innerHTML = ''; //this empties the table
+  storeList = [];
+  numOfStores = 0;
+  render(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought); // this makes a call to the render function to create a new constructor instance with the details that the user put in, and re-do the footer calculation.
+
+
+  //this empties the form fields after the data has been grabbed
+  event.target.storeNameTxt.value = null;
+  event.target.minNumOfCustomersTxt.value = null;
+  event.target.maxNumOfCustomersTxt.value = null;
+  event.target.avgCookieBoughtTxt.value = null;
+}
+
+//the event listener function
+modifyFormDom.addEventListener('submit', handleModifyForm);
+
+//the function that starts the program
+function render(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought){
+  if(storeName === undefined){
+    headerDisplay();
+    creatDefaultLocation();
+    footerDisplay();
+  }else{
+    headerDisplay();
+    creatDefaultLocation();
+    createInstance(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought);
+    footerDisplay();
+  }
+}
+
+render();
