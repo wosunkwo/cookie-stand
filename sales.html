@@ -9,6 +9,27 @@
   <body id="salesPage">
     <a href = "index.html">Home</a>
     <h1> Pat's Salmon Cookies Sales Forcast</h1>
+    <form id="modifyForm">
+      <fieldset>
+        <legend>Add new store parameters</legend>
+        
+        <label for="storeNameTxt">Store Name: </label>
+        <input name="storeNameTxt" type="text" required/>
+
+        <label for="minNumOfCustomersTxt">Minimum number of customers in the store</label>
+        <input name="minNumOfCustomersTxt" type="number" required/>
+
+        <label for="maxNumOfCustomersTxt">Maximum number of customers in the store</label>
+        <input name="maxNumOfCustomersTxt" type="number" required/>
+
+        <label for="avgCookieBoughtTxt">Average number of cookies per sale</label>
+        <input name="avgCookieBoughtTxt" type="number" step="0.1" required/>
+        <button type="submit">Submit Changes</button>
+      </fieldset>
+    </form>
+
+
+
     <table id="storeTbl">
     </table>
   </body>
