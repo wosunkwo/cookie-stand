@@ -3,7 +3,7 @@
 var hours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00pm','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm','8:00pm'];
 
 //the starting values for the store name, min store customer, max store customer, and avg cookies bought. This are going to be modified as the user puts in new values in the text field
-var stores = ['1st and Pike', 'SeaTac Airport','Seattle Center','Capital Hill','Alki'];
+var stores = ['1ST AND PIKE', 'SEATAC AIRPORT','SEATTLE CENTER','CAPITAL HILL','ALKI'];
 var minStoreCustomer = [23,3,11,20,2];
 var maxStoreCustomer = [65,24,38,38,16];
 var avgCookieBought = [6.3,1.2,3.7,2.3,4.6];
@@ -119,16 +119,20 @@ function creatDefaultLocation(){
 //The event handler function
 function handleModifyForm(event){
   event.preventDefault();
-  var storeName = event.target.storeNameTxt.value;
+  var storeName =  event.target.storeNameTxt.value;
   var minNumOfCustomers = Number(event.target.minNumOfCustomersTxt.value);
   var maxNumOfCustomers = Number(event.target.maxNumOfCustomersTxt.value);
   var avgCookieBought = Number(event.target.avgCookieBoughtTxt.value);
-
+  if(maxNumOfCustomers < minNumOfCustomers){
+    return alert('Your max is less than you min');
+  }
+  if(storeList.includes(storeName.toUpperCase())){
+    return alert('Your store name already exist in the database');
+  }
   tbEl.innerHTML = ''; //this empties the table
-  storeList = [];
-  numOfStores = 0;
-  render(storeName, minNumOfCustomers, maxNumOfCustomers, avgCookieBought); // this makes a call to the render function to create a new constructor instance with the details that the user put in, and re-do the footer calculation.
-
+  storeList = []; //this empties the store list
+  numOfStores = 0; //
+  render(storeName.toUpperCase(), minNumOfCustomers, maxNumOfCustomers, avgCookieBought); // this makes a call to the render function to create a new constructor instance with the details that the user put in, and re-do the footer calculation.
 
   //this empties the form fields after the data has been grabbed
   event.target.storeNameTxt.value = null;
